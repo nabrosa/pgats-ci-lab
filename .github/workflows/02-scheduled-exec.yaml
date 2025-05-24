@@ -1,11 +1,14 @@
-# nome do nosso 'pipeline'
+# ci de nivel 2'
 
-name: 'Execução Manual'
+name: 'Execução Agendando'
 # regras de disparo (gatilhos/triggers)
 # gatilho de exec manual = workflow_dispatch
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
+
+
 # trabalhos/tarefas dentro do pipeline = jobs
 jobs:
   e2e-tests:
@@ -20,7 +23,7 @@ jobs:
       # instalação do node
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: latest
 
       # instalação do Yarn
       - name: Instalando Yarn
