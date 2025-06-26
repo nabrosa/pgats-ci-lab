@@ -10,7 +10,7 @@ name: 'Execução por Deploy'
 
 on:
   workflow_run:
-    workflows: ['']
+    workflows: ['Execução Manual']
     type:
       - completed
 
