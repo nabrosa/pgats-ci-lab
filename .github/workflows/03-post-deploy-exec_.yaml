@@ -1,4 +1,4 @@
-|#CI de nível 3, disparo após a conclusão de uma pipeline
+#CI de nível 03 - Disparo após a conclusão de uma pipeline
 
 # nome do nosso 'pipeline'
 
@@ -10,7 +10,7 @@ name: 'Execução por Deploy'
 
 on:
   workflow_run:
-    workflows: ['Execução Manual']
+    workflows: ['']
     type:
       - completed
 
