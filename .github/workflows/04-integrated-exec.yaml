@@ -24,7 +24,7 @@ jobs:
   unidade:
     runs-on: ubuntu-latest
 
-    stpes:
+    steps:
       - uses: actions/checkout@v4
 
       - name: Instalando Yarn
