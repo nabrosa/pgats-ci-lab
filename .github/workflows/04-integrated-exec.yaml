@@ -39,37 +39,37 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
 
-    steps: 
-        # clone do projeto
-        - uses: actions/checkout@v4
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
 
-        # instalação do node
-        - uses: actions/setup-node@v4
-          with:
-            node-version: 22.x
+      # instalação do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
 
-        # instalação do Yarn
-        - name: Instalando Yarn
-          run: npm install -g yarn
-        
-        # instalação das dependências
-        - name: Instalando dependências
-          run: yarn
-        
-        # instalação do Playwright
-        - name: Instalando Playwright
-          run: yarn playwright install
-        
-        # executar os testes e2e
-        - name: Executando Testes E2E
-          run: yarn run e2e
+      # instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
-        - uses: actions/upload-artifact@v4
-          if: ${{ !cancelled() }}
-          with: 
-            name: relatorio
-            path: ./playwright-report
-    
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+
+      # instalação do Playwright
+      - name: Instalando Playwright
+        run: yarn playwright install
+
+      # executar os testes e2e
+      - name: Executando Testes E2E
+        run: yarn run e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio
+          path: ./playwright-report
+
   deploy:
     runs-on: ubuntu-latest
 

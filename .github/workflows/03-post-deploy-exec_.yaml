@@ -14,19 +14,16 @@ on:
     type:
       - completed
 
-
 # trabalhos/tarefas dentro do pipeline = jobs
 jobs:
   e2e-tests:
-  
     #maquina que o job vai executar
     runs-on: ubuntu-latest
     # passos do script de build
 
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
-
-    steps: 
+    steps:
       # clone do projeto
       - uses: actions/checkout@v4
 
@@ -38,21 +35,21 @@ jobs:
       # instalação do Yarn
       - name: Instalando Yarn
         run: npm install -g yarn
-      
+
       # instalação das dependências
       - name: Instalando dependências
         run: yarn
-      
+
       # instalação do Playwright
       - name: Instalando Playwright
         run: yarn playwright install
-      
+
       # executar os testes e2e
       - name: Executando Testes E2E
         run: yarn run e2e
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
-        with: 
+        with:
           name: relatorio
           path: ./playwright-report
