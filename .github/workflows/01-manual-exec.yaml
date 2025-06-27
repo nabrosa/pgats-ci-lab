@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     # passos do script de build
     steps: 
-      # clone do projeto
       - uses: actions/checkout@v4
 
       # instalação do node
